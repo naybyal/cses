@@ -18,7 +18,8 @@ public class IncreasingArray {
 
     for (int i = 1; i < arr.length; i++) {
       if (arr[i] < arr[i-1]) {
-        minimumMoves += Math.abs(arr[i] - arr[i-1]); 
+        minimumMoves += Math.abs(arr[i] - arr[i-1]);
+        arr[i] = arr[i-1];
       }
     }
 
