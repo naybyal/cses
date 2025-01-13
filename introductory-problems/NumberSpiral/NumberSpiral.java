@@ -7,29 +7,31 @@ public class NumberSpiral {
     PrintWriter writer = new PrintWriter(new BufferedOutputStream(System.out));
 
     int t = Integer.parseInt(reader.readLine());
-
+    
     while (t-- > 0) {
       String[] input = reader.readLine().split(" ");
       long y = Long.parseLong(input[0]);
       long x = Long.parseLong(input[1]);
 
-      long result;
+      long maximum = Math.max(x, y);
+      long square = (maximum - 1) * (maximum - 1);
 
-      if (y >= x) {
-        if (y % 2 == 1) {
-          result = y * y - x + 1;
+      long answer;
+      if (maximum % 2 == 0) {
+        if (x > y) {
+          answer = square + y;
         } else {
-          result = (y - 1) * (y - 1) + x;
+          answer = (maximum * maximum) - x + 1;
         }
       } else {
-        if (x % 2 == 1) {
-          result = x * x - y + 1;
+        if (x > y) {
+          answer = (maximum * maximum) - y + 1;
         } else {
-          result = (x - 1) * (x - 1) + y;
+          answer = square + x;
         }
       }
     
-      writer.println(result);
+      writer.println(answer);
     }
 
     writer.flush();
